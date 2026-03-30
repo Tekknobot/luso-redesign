@@ -118,7 +118,7 @@
         <div class="contact-form fade-up">
           <h3 style="margin-bottom:0.25rem">Request a Free Estimate</h3>
           <p style="font-size:0.875rem;margin-bottom:2rem">Fill in the details below and we'll get back to you shortly.</p>
-          <form novalidate>
+          <form id="contact-form" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name *</label>
@@ -167,9 +167,10 @@
               <label for="message">Tell Us About Your Project *</label>
               <textarea id="message" name="message" rows="5" placeholder="Describe your project, approximate square footage, preferred timeline, or any special requirements..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem">
+            <button id="contact-submit" type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem">
               Send Message &rarr;
             </button>
+            <p id="form-status" style="font-size:0.82rem;text-align:center;margin-top:1rem;display:none"></p>
             <p style="font-size:0.78rem;color:var(--muted);text-align:center;margin-top:1rem">
               We respect your privacy. Your information will never be shared.
             </p>
@@ -282,5 +283,56 @@
   </style>
 
   <script src="js/main.js"></script>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const submitButton = document.getElementById("contact-submit");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const formData = Object.fromEntries(new FormData(form).entries());
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+      status.style.display = "none";
+      status.textContent = "";
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || "Unable to send your message right now.");
+        }
+
+        form.reset();
+        status.style.display = "block";
+        status.style.color = "#166534";
+        status.textContent = "Thanks — your message has been sent. We'll get back to you soon.";
+      } catch (error) {
+        status.style.display = "block";
+        status.style.color = "#b91c1c";
+        status.textContent = error.message || "Unable to send your message right now.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = "Send Message &rarr;";
+      }
+    });
+  </script>
+
 </body>
 </html>
