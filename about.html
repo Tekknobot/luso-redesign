@@ -15,9 +15,16 @@
   <nav class="nav scrolled">
     <div class="container">
       <div class="nav__inner">
-        <a href="index.html" class="nav__logo">
-          <span class="nav__logo-name">Luso<span> Painting</span></span>
-          <span class="nav__logo-sub">Calgary, Alberta</span>
+        <a href="index.html" class="nav__logo" aria-label="Luso Painting home">
+          <span class="brand-mark brand-mark--nav" aria-hidden="true">
+            <object data="images/logo.pdf" type="application/pdf" class="brand-mark__asset" tabindex="-1">
+              <span class="brand-mark__fallback">LP</span>
+            </object>
+          </span>
+          <span class="nav__logo-copy">
+            <span class="nav__logo-name">Luso<span> Painting</span></span>
+            <span class="nav__logo-sub">Calgary, Alberta</span>
+          </span>
         </a>
         <ul class="nav__links">
           <li><a href="index.html" data-page="index.html">Home</a></li>
@@ -79,7 +86,7 @@
               <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-top:0.25rem">Projects Done</div>
             </div>
             <div>
-              <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--orange);line-height:1">20+</div>
+              <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--orange);line-height:1">10+</div>
               <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-top:0.25rem">Years Experience</div>
             </div>
             <div>
@@ -185,10 +192,17 @@
   <footer>
     <div class="container">
       <div class="footer__grid">
-        <div>
-          <div class="footer__brand-name">Luso<span> Painting</span></div>
-          <div class="footer__brand-tag">Calgary, Alberta</div>
-          <p class="footer__brand-desc">Professional painting contractor serving Calgary and surrounding areas. Residential and light commercial painting with a commitment to quality and customer satisfaction.</p>
+        <div class="footer__brand">
+          <span class="brand-mark brand-mark--footer" aria-hidden="true">
+            <object data="images/logo.pdf" type="application/pdf" class="brand-mark__asset" tabindex="-1">
+              <span class="brand-mark__fallback">LP</span>
+            </object>
+          </span>
+          <div class="footer__brand-copy">
+            <div class="footer__brand-name">Luso<span> Painting</span></div>
+            <div class="footer__brand-tag">Calgary, Alberta</div>
+            <p class="footer__brand-desc">Professional painting contractor serving Calgary and surrounding areas. Residential and light commercial painting with a commitment to quality and customer satisfaction.</p>
+          </div>
         </div>
         <div class="footer__col">
           <h5>Navigation</h5>
