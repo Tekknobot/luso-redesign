@@ -926,3 +926,60 @@ footer {
     padding: 0.45rem;
   }
 }
+
+/* ---- BEFORE AFTER ---- */
+
+.before-after-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.before-after-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.before-after-photo {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.before-after-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+
+  padding: 0.35rem 0.75rem;
+  border-radius: 2px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.before-after-label.after {
+  background: var(--orange);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .before-after-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .before-after-photo {
+    height: 300px;
+  }
+
+}
