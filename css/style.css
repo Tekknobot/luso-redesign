@@ -138,9 +138,9 @@ img { max-width: 100%; display: block; }
 }
 
 .brand-mark--nav {
-  width: 3rem;
-  height: 3rem;
-  padding: 0.35rem;
+  width: 4.5rem;   /* bigger logo */
+  height: 4.5rem;
+  padding: 0.4rem;
 }
 
 .brand-mark--nav .brand-mark__fallback {
